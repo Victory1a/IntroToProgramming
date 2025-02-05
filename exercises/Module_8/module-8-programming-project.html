@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 8 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//-----------------//
+// Form Validation //
+//-----------------//
+console.log("Form Validation");
+
+// 1. Implement the validateSSN function that should get the SSN from the SSN
+//    input field and then checks the format. The results should be reported to
+//    the user in the status div. You should make sure the SSN is of the
+//    format 123-45-6789, which means you have to do 3 checks: (1) make sure
+//    the length is 11, (2) make sure the dashes are in the 4th and 7th
+//    position, and (3) all the other characters are numbers.
+
+function validateSSN() {
+  // implement your program here
+  // ...
+
+  // make sure the total number of characters is 11
+  // make sure the 4th and and 7th characters are dashes
+  // make sure the rest of the characters are numbers
+}
+
+
+
+//------------//
+// Exceptions //
+//------------//
+console.log("Exceptions");
+
+// 1. How would you modify your code above to use exceptions to handle
+//    incorrect SSNs? Include code snippets in your answer (so it has to be
+//    more than just words).
+
+
+
+//----------------//
+// More On Events //
+//----------------//
+console.log("More On Events");
+
+// 1. Attach onfocus and onblur events to the SSNField below using only
+//    JavaScript, i.e., do not modify the HTML. Change the background of the
+//    text input field on these events.
+
+window.onload = function() {
+  // put your code here
+};
+
+
+
+</script>
+</head>
+<body>
+  See console!<br><br>
+  <input type="text" id="SSNField">
+  <input type="button" value="Check" onclick="validateSSN();">
+  <br><br>
+  <div id="statusDiv">
+    Please enter an SSN and press Check!
+  </div>
+</body>
+</html>
