@@ -21,11 +21,18 @@
 prompt(variablename);
 
 // 1. Create a string variable that uses a prompt that asks the customer for his/her name
-
+//var char{"What is yuur name"}
+var userName = prompt("What is your name?");
+console.log("Hello, " + userName + "!");
 // 2. Write the value from #1 in the Console
+console.log("Hello, " + userName + "!");
 
 // 3. Create a conditional statement that validates if the user has not input a name from #1, provide an alternate message.
-
+if(userName === "") {
+  console.log("Input a value")
+} else {
+  console.log("something");
+}
 
 
 //--------//
