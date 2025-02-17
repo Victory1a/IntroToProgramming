@@ -16,7 +16,7 @@ console.log("Strings");
 //    result to the console.
 
 var countries = ["AustraliA", "greece", "PERU", "ChInA"];
-countries = countries.map(country => country.charAt(0).toUpperCase() + country.slice[1].toLowerCase());
+countries = countries.map(country => country.charAt(0).toUpperCase() + country.slice(1).toLowerCase());
 console.log(countries);
 
 // 2. Get every second and third letter from each country and concatenate them.
@@ -35,7 +35,7 @@ if(index !== -1) {
 }
 console.log(sentence);
 // 4. Find the index of the last occurrence of flies in sentence.
-var lastIndex = sentence.lasstIndexOf("flies");
+var lastIndex = sentence.lastIndexOf("flies");
 console.log(lastIndex);
 // 5. Prompt the user for a string, reverse it, and show the result to the user.
 var userInput = prompt("Enter a string to reverse:");
@@ -55,14 +55,15 @@ console.log("Numbers");
 var value = 13.3;
 
 // 1. Round the value using normal math rules.
-
+console.log(Math.round(value));
 // 2. Round the value up.
-
+console.log(Math.ceil(value));
 // 3. Round the value down.
-
+console.log(Math.floor(value));
 // 4. Simulate a coin flip by generating a random number. Assume the coin is
 //    fair and print the result, heads or tails, to the console.
-
+var coinFlip = Math.random() < 0.5 ? "Heads" : "Tails";
+console.log(coinFlip);
 
 
 //-------//
@@ -73,13 +74,27 @@ console.log("Dates");
 // 1. Prompt the user for their age and proceed to show in what year they
 //    were born (you can assume they already had their birthday in the current
 //    year).
+var age = prompt("Enter your age");
+if (age) {
+  var currentYear = new Date().getFullYear();
+  var birthYear = currentYear - parseInt(age);
+  alert("You were born in" + birthYear);
+}
 
 // 2. Make a program that does the following: (1) Use a prompt to obtain the
 //    birth year of the user. (2) Use a prompt to obtain the birth month of
 //    the user. (3) Use a prompt to obtain the birth day of the user.
 //    (4) Calculate how old the user is in days. (5) Show the result to
 //    the user.
-
+var birthYear = prompt("Enter your birth year:");
+var birthMonth = prompt("Enter your birth month (1-12):");
+var birthDay = prompt("Enter your birth day:");
+if (birthYear && birthMonth && birthDay) {
+  var birthDate = new Date(birthYear, birthMonth - 1, birthDay);
+  var today = new Date();
+  var ageInDays = Math.floor ((today - birthDate) / (1000 * 60 * 60 * 24));
+  alert("Your age in days is:" + ageInDays);
+}
 
 
 </script>
