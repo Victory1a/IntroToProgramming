@@ -55,14 +55,21 @@ console.log("Numbers");
 var value = 13.3;
 
 // 1. Round the value using normal math rules.
+var roundedValue = Math.round(value);
+console.log("Rounded value:", roundedValue);
 
 // 2. Round the value up.
+var roundedUp = Math.ceil(value);
+console.log("Rounded up:", roundedUp);
 
 // 3. Round the value down.
+var roundedDown = Math.floor(value);
+console.log("Rounded down:", roundedDown);
 
 // 4. Simulate a coin flip by generating a random number. Assume the coin is
 //    fair and print the result, heads or tails, to the console.
-
+var coinFlip = Math.random() < 0.5 ? "Heads" : "Tails";
+console.log("Coin flip result:", coinFlip);
 
 
 //-------//
@@ -73,13 +80,30 @@ console.log("Dates");
 // 1. Prompt the user for their age and proceed to show in what year they
 //    were born (you can assume they already had their birthday in the current
 //    year).
+var age = prompt("enter your age:");
+var currentYear = new Date().getFullYear();
+var birthYear = currentYear - age;
+alert("You were born in the Year" + birthYear);
+console.log("User's birth year:", birthYear);
 
 // 2. Make a program that does the following: (1) Use a prompt to obtain the
 //    birth year of the user. (2) Use a prompt to obtain the birth month of
 //    the user. (3) Use a prompt to obtain the birth day of the user.
 //    (4) Calculate how old the user is in days. (5) Show the result to
 //    the user.
+var birthYearInput = prompt("Enter your birth year:");
+var birthMonthInput = prompt("Enter your birthmonnth (1-12):");
+var birthdayInput = prompt("enter your birth day (1-31):");
 
+// Create birth date object
+var birthdate = new Date(birthYearInput, birthMonthInput - 1, birthdayInput);
+
+// Calculate age in days
+var ageMilliseconds = today - birthdate;
+var ageInDays = Math.floor(ageMilliseconds / (1000 * 60 * 60 *24));
+
+alert("Your are approximately " + ageInDays + "days old!");
+console.log("User's age in days!", ageInDays);
 
 
 </script>
