@@ -1,10 +1,14 @@
-
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>CMPS 162: Module 8 Programming Project</title>
-<style>* { font-family: monospace; }</style>
+<style>
+* { font-family: monospace; }
+.focus { background-color: #e0f7fa; }
+.error { color: red; }
+.success { color: green; }
+</style>
 <script>
 
 //-----------------//
@@ -12,59 +16,56 @@
 //-----------------//
 console.log("Form Validation");
 
-// 1. Implement the validateSSN function that should get the SSN from the SSN
-//    input field and then checks the format. The results should be reported to
-//    the user in the status div. You should make sure the SSN is of the
-//    format 123-45-6789, which means you have to do 3 checks: (1) make sure
-//    the length is 11, (2) make sure the dashes are in the 4th and 7th
-//    position, and (3) all the other characters are numbers.
-
 function validateSSN() {
-  // implement your program here
-  // ...
+const ssnField = document.getElementById("SSNField").value;
+const statusDiv = document.getElementById("statusDiv");
 
-  // make sure the total number of characters is 11
-  // make sure the 4th and and 7th characters are dashes
-  // make sure the rest of the characters are numbers
+try {
+// Verificar que la longitud sea 11
+if (ssnField.length !== 11) throw "SSN must be 11 characters long";
+
+// Verificar que los guiones estén en la posición 4 y 7
+if (ssnField[3] !== '-' || ssnField[6] !== '-') throw "Dashes must be at positions 4 and 7";
+
+// Verificar que los caracteres restantes sean números
+const ssnPattern = /^\d{3}-\d{2}-\d{4}$/;
+if (!ssnPattern.test(ssnField)) throw "SSN must be in the format 123-45-6789";
+
+// Si pasa todas las verificaciones
+statusDiv.innerHTML = "Valid SSN!";
+statusDiv.className = "success";
+} catch (error) {
+statusDiv.innerHTML = `Error: ${error}`;
+statusDiv.className = "error";
 }
-
-
-
-//------------//
-// Exceptions //
-//------------//
-console.log("Exceptions");
-
-// 1. How would you modify your code above to use exceptions to handle
-//    incorrect SSNs? Include code snippets in your answer (so it has to be
-//    more than just words).
-
-
+}
 
 //----------------//
 // More On Events //
 //----------------//
 console.log("More On Events");
 
-// 1. Attach onfocus and onblur events to the SSNField below using only
-//    JavaScript, i.e., do not modify the HTML. Change the background of the
-//    text input field on these events.
-
 window.onload = function() {
-  // put your code here
+const ssnField = document.getElementById("SSNField");
+
+ssnField.onfocus = function() {
+ssnField.classList.add("focus");
 };
 
-
+ssnField.onblur = function() {
+ssnField.classList.remove("focus");
+};
+};
 
 </script>
 </head>
 <body>
-  See console!<br><br>
-  <input type="text" id="SSNField">
-  <input type="button" value="Check" onclick="validateSSN();">
-  <br><br>
-  <div id="statusDiv">
-    Please enter an SSN and press Check!
-  </div>
+See console!<br><br>
+<input type="text" id="SSNField" placeholder="123-45-6789">
+<input type="button" value="Check" onclick="validateSSN();">
+<br><br>
+<div id="statusDiv">
+Please enter an SSN and press Check!
+</div>
 </body>
 </html>
