@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>My Project</title>
+        <link rel="stylesheets" href="css/styles.css">
+    </head>
+<body>
+    <div class = "container">
+        <h2> Fill out Application</h2>
+        <form id="userform">
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="firstname">
+
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name = "lastname">
+
+            <label for="city">City</label>
+            <input type="text" id="city" name = "city">
+
+            <label for="state">State</label>
+            <select name="state" id="state">
+                <option value="">Select State</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="OH">Ohio</option>
+                <option value="NY">New York</option>
+                <option value="VA">Virginia</option>
+                <option value="MA">Massecusetts</option>
+            </select>
+            
+            <label for="zipcode">Zip Code</label>
+            <input type="text" id="zipcode" name = "zipcode" maxlength= "5">
+
+            <button type="submit">Submit</button>
+            <p id="errorMessage" class="error"></p>
+            <p id="successMessage" class="success"></p>
+            
+        </form>
+
+
+    </div>
+
+    <script src="js/script.js/"></script>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

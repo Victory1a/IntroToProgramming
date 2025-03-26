@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 8;
+    padding: 20px;
+}
+
+.container {
+    max-width: 100px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4ox rgba(red, green, blue, alpha);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, selet, button {
+    width: 100px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input.error, select.error {
+    background-color: black;
+}
+
+button {
+    background-color: darkgray;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button hover {
+    background-color: #005663;
+}
+.error {
+    color: red;
+    margin-top: -5px;
+}
+
+.success {
+    color: green;
+    margin-top: -5px;
+}
