@@ -1,4 +1,3 @@
-// Ship data array
 const ships = [
     { name: "Ambassador Class", length: 526, crew: 700, speed: "Warp 9.6", price: 500000, image: "images/ambassador.jpg" },
     { name: "Constitution II Class", length: 305, crew: 430, speed: "Warp 8", price: 750000, image: "images/constitution.jpg" },
@@ -69,6 +68,21 @@ function displayShips(shipList) {
         `;
         shipListElement.appendChild(shipSection);
     });
+}
+
+function addToCart(shipName, shipPrice) {
+    try {
+        cart.push({ name: shipName, price: shipPrice });
+        totalCartCost += shipPrice;
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("totalCartCost", totalCartCost);
+
+        updateCart();
+    } catch (error) {
+        console.error("Error adding to cart:", error);
+        alert("Failed to add item to cart.");
+    }
 }
 
 // Show detailed ship info when clicking on name
@@ -208,19 +222,22 @@ function applyDiscount() {
     return totalCostWithDiscount;
 }
 
-// Updated completePurchase function to apply discount
 function completePurchase() {
-    let finalTotal = applyDiscount(); // Apply discount before finalizing
+    try {
+        let finalTotal = applyDiscount();
 
-    alert(`Purchase completed! Your total is $${finalTotal.toLocaleString()}. Thank you for shopping with us.`);
+        alert(`Purchase completed! Your total is $${finalTotal.toLocaleString()}. Thank you for shopping with us.`);
 
-    // Clear cart and localStorage
-    cart = [];
-    totalCartCost = 0;
-    localStorage.removeItem("cart");
-    localStorage.removeItem("totalCartCost");
+        cart = [];
+        totalCartCost = 0;
+        localStorage.removeItem("cart");
+        localStorage.removeItem("totalCartCost");
 
-    window.location.href = "index.html";
+        window.location.href = "index.html";
+    } catch (error) {
+        console.error("Error completing purchase:", error);
+        alert("There was an error processing your purchase.");
+    }
 }
 
 // Proceed to Checkout
@@ -231,25 +248,28 @@ function proceedToCheckout() {
 
 // Load Checkout Page
 function loadCheckout() {
-    const checkoutItemsElement = document.getElementById("checkout-items");
-    const checkoutTotalCostElement = document.getElementById("checkout-total-cost");
+    try {
+        const checkoutItemsElement = document.getElementById("checkout-items");
+        const checkoutTotalCostElement = document.getElementById("checkout-total-cost");
 
-    // Retrieve cart data from localStorage
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const storedTotalCost = parseFloat(localStorage.getItem("totalCartCost")) || 0;
+        const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+        const storedTotalCost = parseFloat(localStorage.getItem("totalCartCost")) || 0;
 
-    // Display cart items and total cost
-    if (checkoutItemsElement) {
-        checkoutItemsElement.innerHTML = "";
-        storedCart.forEach(ship => {
-            const li = document.createElement("li");
-            li.textContent = `${ship.name} - $${ship.price.toLocaleString()}`;
-            checkoutItemsElement.appendChild(li);
-        });
-    }
+        if (checkoutItemsElement) {
+            checkoutItemsElement.innerHTML = "";
+            storedCart.forEach(ship => {
+                const li = document.createElement("li");
+                li.textContent = `${ship.name} - $${ship.price.toLocaleString()}`;
+                checkoutItemsElement.appendChild(li);
+            });
+        }
 
-    if (checkoutTotalCostElement) {
-        checkoutTotalCostElement.textContent = storedTotalCost.toLocaleString();
+        if (checkoutTotalCostElement) {
+            checkoutTotalCostElement.textContent = storedTotalCost.toLocaleString();
+        }
+    } catch (error) {
+        console.error("Error loading checkout:", error);
+        alert("There was an error loading the checkout page.");
     }
 }
 
